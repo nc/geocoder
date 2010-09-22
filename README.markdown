@@ -1,6 +1,6 @@
 = geocoder
 
-Description goes here.
+API for geocoding. Supports Google Geocoding API & Yahoo PlaceFinder API
 
 == Note on Patches/Pull Requests
  
@@ -14,4 +14,4 @@ Description goes here.
 
 == Copyright
 
-Copyright (c) 2010 Namit Chadha. See LICENSE for details.
+Copyright (c) 2010 AppSpark. See LICENSE for details.
