@@ -49,9 +49,7 @@ module Geocoder
     
     def parse response_body
       status = "OK" # todo nc add error handling
-      result = response_body["ResultSet"]["Result"]
-      puts response_body.inspect
-      
+      result = response_body["ResultSet"]["Result"]      
       result = GeocodingResult.new(:point => GeoRuby::SimpleFeatures::Point.from_lon_lat(result["longitude"].to_f, result["latitude"].to_f), 
                                    :formatted_address => ("#{result["line1"]}, #{result["line2"]}, #{result["countrycode"]}"))
       response = GeocodingResponse.new(:results => [result], :status => status)
