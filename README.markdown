@@ -1,4 +1,4 @@
-geocoder
+Geocoder
 ========
 
 API for geocoding. Supports Google Geocoding API & Yahoo PlaceFinder API
