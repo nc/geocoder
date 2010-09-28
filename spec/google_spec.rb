@@ -1,6 +1,6 @@
 require 'spec_helper.rb'
 
-describe Geocoder::GoogleGeocoder do
+describe Geocoder::Google do
   it "should be able to parse a Google geocoding API response" do
     sample_response = %Q{
       {
@@ -56,14 +56,9 @@ describe Geocoder::GoogleGeocoder do
     
     json_sample_response = Crack::JSON.parse(sample_response)
     
-    response = Geocoder::GoogleGeocoder.new.parse(json_sample_response)
-    response.status.should == "OK"
-    
-    result = response.results.first
-    result.formatted_address.should == "1600 Amphitheatre Pkwy, Mountain View, CA 94043, USA"
-    
     expected_point = GeoRuby::SimpleFeatures::Point.from_lon_lat(-122.0841430, 37.4219720)
-    result.point.lat.should == expected_point.lat
-    result.point.lon.should == expected_point.lon
+    point = Geocoder::Google.new.parse(json_sample_response)
+    point.lat.should == expected_point.lat
+    point.lon.should == expected_point.lon
   end
 end

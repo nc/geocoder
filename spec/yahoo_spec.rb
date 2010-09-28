@@ -1,9 +1,7 @@
-module Geocoder
-  class YahooGeocoder < Geocoder::Base
-    include HTTParty
-    base_uri 'http://where.yahooapis.com'
-    default_params :appid => "TENIydrV34FysB52jX0u6FIpeNqVt5wrYIEwpYafQC4J270ingCnjJQhi0.I7INq6pgXeH69P2N6DAPb9w--"
-    format :xml
+require 'spec_helper.rb'
+
+describe Geocoder::Yahoo do
+  it "should be able to parse a Yahoo geocoding API response" do
     
     sample_response = %Q{
       <?xml version="1.0" encoding="UTF-8"?>
@@ -46,19 +44,10 @@ module Geocoder
       </Result>
       </ResultSet>
     }
-    
-    def parse response_body
-      status = "OK" # todo nc add error handling
-      result = response_body["ResultSet"]["Result"]      
-      result = GeocodingResult.new(:point => GeoRuby::SimpleFeatures::Point.from_lon_lat(result["longitude"].to_f, result["latitude"].to_f), 
-                                   :formatted_address => ("#{result["line1"]}, #{result["line2"]}, #{result["countrycode"]}"))
-      response = GeocodingResponse.new(:results => [result], :status => status)
-    end
-    
-    def geocode params={}
-      response = self.class.get('/geocode', :query => { :q => params[:address] })
-      parse(parsed_response)
-    end
-    
+
+    point = Geocoder::Yahoo.new.parse(Crack::XML.parse(sample_response))
+    expected_point = GeoRuby::SimpleFeatures::Point.from_lon_lat(-77.035974, 38.898717)
+    point.lat.should == expected_point.lat
+    point.lon.should == expected_point.lon
   end
 end
