@@ -11,7 +11,7 @@ module Geocoder
 
     def geocode params={}
       response = self.class.get('/maps/api/geocode/json', :query => params)
-      parse(response.parsed_response)
+      parse(response.parsed_response) rescue raise "Geocoder::Google failed to decode #{response}"
     end
     
   end

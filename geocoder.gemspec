@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{geocoder}
-  s.version = "0.0.1"
+  s.version = "0.2.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Namit Chadha"]
-  s.date = %q{2010-09-22}
+  s.date = %q{2010-09-29}
   s.description = %q{Geocoding API for Google and Yahoo geocoding Web Services}
   s.email = %q{nc@appspark.us}
   s.extra_rdoc_files = [
@@ -19,20 +19,22 @@ Gem::Specification.new do |s|
   s.files = [
     ".document",
      ".gitignore",
+     ".rspec",
      "LICENSE",
      "README.markdown",
      "Rakefile",
      "VERSION",
+     "geocoder.gemspec",
      "lib/geocoder.rb",
      "lib/geocoder/base.rb",
      "lib/geocoder/geocoding_response.rb",
      "lib/geocoder/geocoding_result.rb",
-     "lib/geocoder/google_geocoder.rb",
-     "lib/geocoder/yahoo_geocoder.rb",
+     "lib/geocoder/google.rb",
+     "lib/geocoder/yahoo.rb",
      "spec/geocoder_spec.rb",
-     "spec/google_geocoder_spec.rb",
+     "spec/google_spec.rb",
      "spec/spec_helper.rb",
-     "spec/yahoo_geocoder_spec.rb"
+     "spec/yahoo_spec.rb"
   ]
   s.homepage = %q{http://github.com/nc/geocoder}
   s.rdoc_options = ["--charset=UTF-8"]
@@ -41,9 +43,9 @@ Gem::Specification.new do |s|
   s.summary = %q{Geocoding API for Google and Yahoo geocoding Web Services}
   s.test_files = [
     "spec/geocoder_spec.rb",
-     "spec/google_geocoder_spec.rb",
+     "spec/google_spec.rb",
      "spec/spec_helper.rb",
-     "spec/yahoo_geocoder_spec.rb"
+     "spec/yahoo_spec.rb"
   ]
 
   if s.respond_to? :specification_version then
