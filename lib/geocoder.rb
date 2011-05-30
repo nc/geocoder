@@ -6,4 +6,8 @@ require 'geo_ruby'
 require 'ostruct'
 require 'crack'
 
-Dir["#{File.dirname(__FILE__)}/geocoder/*"].each { |file| require file }
+require "geocoder/base"
+require "geocoder/geocoding_response"
+require "geocoder/geocoding_result"
+require "geocoder/google"
+require "geocoder/yahoo"
